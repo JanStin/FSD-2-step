@@ -12,10 +12,10 @@ $color-gradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)
     border: solid 1px $color-dark-shade-25
     cursor: pointer
     position: relative
-    &::after
+    &:after   //snap
         content: ""
-        height: 12px //snap
-        width: 12px //snap
+        height: 12px 
+        width: 12px 
         border-radius: 10px
         background: $color-dark-shade-25
         top: 3px        
@@ -23,9 +23,9 @@ $color-gradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)
         transition-duration: 600ms
         position: absolute
 
-.toggle-on
-    border: solid 1px $color-gradient
-    &::after
+.toggle-on   //snap
+    border-color: #BC9CFF
+    &:after
         background: $color-gradient
         left: 23px
         

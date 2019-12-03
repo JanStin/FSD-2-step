@@ -11,10 +11,11 @@ $(function(){
         }
     });
 
-
-
-    $('.toggle').each(function(){
-        $(this).triggerHandler('click', false);
+    $('.toggle').on('on.toggle', function () {
+        $(this).addClass('toggle-on');
+    });
+    $('.toggle').on('off.toggle', function () {
+        $(this).removeClass('toggle-on');
     });
     
 });
