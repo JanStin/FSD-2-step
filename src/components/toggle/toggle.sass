@@ -1,0 +1,34 @@
+$color-white: #FFFFFF
+$color-dark-shade-25: rgba(31, 32, 65, 0.25)
+$color-gradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)
+
+.toggle
+    display: inline-block
+    width: 72px 
+    height: 38px
+    border-radius: 19px
+    background: $color-white
+    border: solid 1px $color-gradient
+    cursor: pointer
+    transition-duration: 300ms
+    // Возможно нужны
+    position: relative
+    margin: 0
+    padding: 0
+    z-index: 0
+    &::after
+        content: ""
+        height: 32px //snap
+        width: 32px //snap
+        border-radius: 10px
+        background: $color-dark-shade-25
+        top: 3px
+        left: 3px
+        transition-duration: 300ms
+        z-index: 1
+        position: absolute
+
+.toggle-on
+    background: $color-white
+    &::after
+        left: 20px
