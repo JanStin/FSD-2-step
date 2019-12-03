@@ -11,13 +11,7 @@ $(function(){
         }
     });
 
-    $('.toggle').on('on.toggle', function(){
-        console.log('Кнопка переключена в состояние on');
-    });
-    
-    $('.toggle').on('off.toggle', function(){
-        console.log('Кнопка переключена в состояние off');
-    });
+
 
     $('.toggle').each(function(){
         $(this).triggerHandler('click', false);

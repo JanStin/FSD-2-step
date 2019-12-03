@@ -1,5 +1,9 @@
 // import style from './main.scss';
-import 'jquery';
+import $ from 'jquery';
+
+global.jQuery = $;
+global.$ = $;
+
 require('./main.scss');
 
 function requireAll(requireContext) {
