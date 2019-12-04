@@ -1,2 +1,20 @@
+//options.text - текст
+//options.size - размер ('', 'small')
+//options.type - тип - модификатор ('', 'error')
+//options.isInverted - инвертирование цвета (bool)
+//options.isSubmit - задает тип кнопки Submit (bool)
+//options.tabindex - задает tabindex
 
-h1 условная кнопка со стилями
+mixin button(options)
+    if !options
+        - var options = {}
+    -
+        var classes = ''
+        classes += options.type ? ' button_' + options.type : ''
+        classes += options.size ? ' button_' + options.size : ''
+        classes += options.isInverted ? ' button_inverted' : ''
+    .button.js-button(class=classes)
+        button.button__element(
+            type = options.isSubmit ? 'submit' : false,
+            tabindex = options.tabindex || false
+        )= options.text || 'Button'

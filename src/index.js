@@ -4,7 +4,7 @@ import $ from 'jquery';
 global.jQuery = $;
 global.$ = $;
 
-require('./main.scss');
+require('./main.sass');
 
 function requireAll(requireContext) {
     return requireContext.keys().map(requireContext);
