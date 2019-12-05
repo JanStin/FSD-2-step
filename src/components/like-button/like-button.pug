@@ -1,3 +1,4 @@
-div.like-button    
-    div.like-button__like favorite_border
-    div.like-button__count 12
+mixin like-button(count)
+    .like-button
+        .like-button__like favorite_border
+        .like-button__count= count
