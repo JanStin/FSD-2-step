@@ -1,4 +1,10 @@
-mixin like-button(count)
-    .like-button
-        .like-button__like favorite_border
-        .like-button__count= count
+// On - bool, count - int
+mixin like-button(on, count)
+    if on
+        .like-button.like-button-on
+            .like-button__like favorite
+            .like-button__count= count
+    else
+        .like-button
+            .like-button__like favorite_border
+            .like-button__count= count
