@@ -1,8 +1,0 @@
-//options.type - модификаторы и прочее форма замиси button__
-mixin button(options)
-    if !options
-        - var options= {text: 'Lineage top'}
-    div.button(class=options.type)
-        button.button__element()= options.text
-
-+button({text: 'Hello', type: ''})

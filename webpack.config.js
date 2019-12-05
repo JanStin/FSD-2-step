@@ -58,6 +58,13 @@ let config = {
                 options: {
                     name: '[name].[ext]'
                 }
+            },
+            {
+                test: /\.(png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]'
+                }
             }
         ]
     },

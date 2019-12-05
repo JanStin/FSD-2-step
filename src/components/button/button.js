@@ -1,1 +1,1 @@
-import './button.sass'
+import './main.scss'

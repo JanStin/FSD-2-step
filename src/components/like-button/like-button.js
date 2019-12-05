@@ -8,7 +8,10 @@ $(function(){
         if ($(this).hasClass('like-button-on')) {
             $(this).trigger('on.likeButton');
 
+            // Меняем сердечко.
             $(this).find($('.like-button__like')).text('favorite');
+
+            // Меняем кол-во лайков.
             let count = $(this).find($('.like-button__count')).text();
             count = parseInt(count);
             $(this).find($('.like-button__count')).text(++count);
@@ -17,6 +20,7 @@ $(function(){
             $(this).trigger('off.likeButton');
 
             $(this).find($('.like-button__like')).text('favorite_border');
+
             let count = $(this).find($('.like-button__count')).text();
             count = parseInt(count);
             $(this).find($('.like-button__count')).text(--count);
