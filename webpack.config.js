@@ -1,37 +1,41 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
 
 let config = {
-    // точка входа
-
-    entry: './src/index.js',
-
-    // Точка выхода (и другие настройки еще не совсем разобрался)
-    output: {
+    entry : {index: './src/pages/index/main.js', login: './src/pages/login/main.js'},
+    output : {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js',
-        publicPath: ""
+        filename: 'js/[name].js',
+        publicPath: ''
     },
 
-    // config web-dev-server
     devServer: {
         overlay: true
     },
 
-
-    // Подключенные доп модули webpack
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    name: 'vendors',
+                    test: /node_modules/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
+    },
     module: {
         rules: [
-            //babel перегоняет новый код в старый для поддержки старыми браузерами
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: '/node_modules/'
             },
-            //Данный модуль позволяет импортировать css в js
 
-            // Последовательность подключения loader справа на лево
             {
                 test: /\.(sa|sc|c)ss$/,
                 use:
@@ -44,47 +48,61 @@ let config = {
                         },
                     },
                     'css-loader',
-                    // 'postcss-loader',
                     'sass-loader',
                 ],
             },
+
             {
                 test: /\.pug$/,
                 loader: 'pug-loader'
             },
+
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(img|jpe?g|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[ext]'
-                }
+                    name: 'img/[name].[ext]',
+                    publicPath: '../'
+                },
             },
             {
-                test: /\.(png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(woff(2)?|ttf|eot|)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[ext]'
+                    name: 'fonts/[name].[ext]',
+                    publicPath: "../"
                 }
             }
+            
         ]
     },
 
-    // Подключаемые плагины
     plugins: [
         new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // all options are optional
-            filename: '[name].css',
+            filename: 'css/[name].css',
             chunkFilename: '[id].css',
-            ignoreOrder: false, // Enable to remove warnings about conflicting order
+            ignoreOrder: false, 
         }),
 
         new HtmlWebpackPlugin({
-            template: "./src/test.pug"
+            template: './src/pages/index/index.pug',
+            filename: 'index.html',
+            chunks: ['index', 'vendors']
         }),
 
-    ]
+        new HtmlWebpackPlugin({
+            template: './src/pages/login/index.pug',
+            filename: 'login.html',
+            chunks: ['login', 'vendors']
+        }),
 
-};
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        }),
+    ]
+        
+    
+}
 
 module.exports = config;
