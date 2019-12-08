@@ -58,7 +58,7 @@ let config = {
             },
 
             {
-                test: /\.(img|jpe?g|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(img|png|jpe?g|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'file-loader',
                 options: {
                     name: 'img/[name].[ext]',
