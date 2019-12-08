@@ -6,22 +6,20 @@ $color-lavanda: #BC9CFF
     box-sizing: border-box
     display: flex
     flex-direction: row
-    justify-content: space-around
     width: 40px 
-    height: 20px
-    align-items: center    
+    height: 20px 
     border: solid 1px $color-gray
     border-radius: 10px
     cursor: pointer
     color: $color-gray
-    // &__like, &__count
-    //     flex-basis: 50%
-        // align-self: center
-        // flex-shrink: 1
+    &__like, &__count
+        flex-basis: 50%
+        align-self: center
     &__like
         font-family: 'Material Icons'
         font-size: 10px
         line-height: 9px
+        text-align: center
     &__count
         font-family: $font-family
         font-size: 10px
