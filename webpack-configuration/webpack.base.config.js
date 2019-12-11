@@ -22,8 +22,7 @@ let config = {
     // Точки входа
     entry: {
         index: `${PATHS.src}/index.js`,
-        login: `${PATHS.src}/login.js`,
-        register: `${PATHS.src}/register.js`,
+        login: `${PATHS.src}/login.js`
     },
 
     // На выходе [name] - имя точки входа
@@ -78,10 +77,9 @@ let config = {
                         loader: 'sass-resources-loader',
                         options: {
                             resources: [
-                                `${PATHS.src}${PATHS.theme}variables.scss`,
-                                `${PATHS.src}${PATHS.theme}mixins.scss`,
-                             
-                                // `${PATHS.src}${PATHS.theme}fonts.scss`,
+                                `${PATHS.src}${PATHS.theme}variables.sass`,
+                                // `${PATHS.src}${PATHS.theme}mixins.scss`,
+                                // `${PATHS.src}${PATHS.theme}fonts.sass`,
                             ],
                         }
                     }

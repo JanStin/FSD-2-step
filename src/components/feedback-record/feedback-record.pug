@@ -13,7 +13,8 @@ include ../like-button/like-button
 mixin feedback-record(record)
     .feedback-record
         .feedback-record__top
-     
+            script
+                import '#{record.image}'
             img(src=record.image, alt=record.author)
             .feedback-record__title
                 .feedback-record_author= record.author
@@ -24,13 +25,11 @@ mixin feedback-record(record)
             .simple-text= record.text
 
 
-+feedback-record({
-    image: 'img/dd43be.png', 
-    author: 'Vb[fbk Rbhbkby',
-    data: '3 lyz yfpfl',
-    on: true,
-    count: 12,
-    text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'
-})
-
-//- img(src='img/dd43be.png')
+//- +feedback-record({
+//-     image: 'img/dd43be.png', 
+//-     author: 'Vb[fbk Rbhbkby',
+//-     data: '3 lyz yfpfl',
+//-     on: true,
+//-     count: 12,
+//-     text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'
+//- })
