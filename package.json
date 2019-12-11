@@ -11,7 +11,7 @@
     "> 1%",
     "last 3 version"
   ],
-  "author": "Kotaro Hiba",
+  "author": "Kirilin Mixail",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.7.5",
