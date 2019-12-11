@@ -1,3 +1,17 @@
+// Шрифты потом потключить по другому. 1 - за текст, 2 - за сердечко.
+// Если что поменять пути к шрифтам.
+@font-face
+    font-family: 'Montserrat'
+    src: url('../../fonts/Montserrat/Montserrat-Light.ttf')
+    font-weight: normal
+    font-size: normal
+
+@font-face 
+  font-family: 'Material Icons'
+  font-style: normal
+  font-weight: 400
+  src: url('../../fonts/MaterialIcons-Regular/MaterialIcons-Regular.ttf')
+
 $font-family: 'Montserrat'
 $color-gray: rgba(31, 32, 65, 0.25)
 $color-lavanda: #BC9CFF
@@ -6,20 +20,18 @@ $color-lavanda: #BC9CFF
     box-sizing: border-box
     display: flex
     flex-direction: row
+    justify-content: space-around
     width: 40px 
-    height: 20px 
+    height: 20px
+    align-items: center    
     border: solid 1px $color-gray
     border-radius: 10px
     cursor: pointer
     color: $color-gray
-    &__like, &__count
-        flex-basis: 50%
-        align-self: center
     &__like
         font-family: 'Material Icons'
         font-size: 10px
         line-height: 9px
-        text-align: center
     &__count
         font-family: $font-family
         font-size: 10px

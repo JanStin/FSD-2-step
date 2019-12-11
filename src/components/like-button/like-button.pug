@@ -1,6 +1,5 @@
 // On - bool (true/false) - нажато ли сердечко. 
-   Count - int - значение в кол-чо лайков.
-   +like-button(true, 5)
+// Count - int - значение в кол-чо лайков.
 mixin like-button(on, count)
     if on
         .like-button.like-button-on
@@ -10,20 +9,3 @@ mixin like-button(on, count)
         .like-button
             .like-button__like favorite_border
             .like-button__count= count
-
-//- mixin like-butto(like)
-//-     - 
-//-         var classes = 'like-button'
-//-         classes += like.on ? ' like-button-on' : ''
-    
-//-     div(class= classes)
-
-
-//-     if on
-//-         .like-button.like-button-on
-//-             .like-button__like favorite
-//-             .like-button__count= count
-//-     else
-//-         .like-button
-//-             .like-button__like favorite_border
-//-             .like-button__count= count

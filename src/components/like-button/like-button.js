@@ -13,7 +13,7 @@ $(function(){
 
             // Меняем кол-во лайков.
             let count = $(this).find($('.like-button__count')).text();
-            count = parseInt(count, 10);
+            count = parseInt(count);
             $(this).find($('.like-button__count')).text(++count);
 
         } else {
@@ -22,7 +22,7 @@ $(function(){
             $(this).find($('.like-button__like')).text('favorite_border');
 
             let count = $(this).find($('.like-button__count')).text();
-            count = parseInt(count, 10);
+            count = parseInt(count);
             $(this).find($('.like-button__count')).text(--count);
         }
     });
