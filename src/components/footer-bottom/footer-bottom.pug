@@ -1,7 +1,31 @@
-div.footer-bottom
-    div.footer-bottom__content
-        div.footer-bottom__text Copyright © 2018 Toxin отель. Все права зачищены. 
-        div.footer-bottom__social
-            img(src="img/twiter.svg", alt="")
-            img(src="img/facebook.svg", alt="")
-            img(src="img/instagram.svg", alt="")
+// Пример под миксином. 
+mixin footer-bottom(options)
+    -
+        var classes = 'footer-bottom'
+        classes += options.addAnyClass ? ' ' + options.addAnyClass : ''
+
+    div(class=classes)
+        .footer-bottom__content
+            .footer-bottom__text= options.text
+            .footer-bottom__social
+                for image in options.listImage
+                    img(src=image.path, alt=image.name)
+
+//- +footer-bottom({
+        addAnyClass: false,
+        text: 'Copyright © 2018 Toxin отель. Все права зачищены.',
+        listImage: [
+            {
+                path: 'img/twiter.svg',
+                name: 'twiter'
+            },
+            {
+                path: 'img/facebook.svg',
+                name: 'facebook'
+            },
+            {
+                path: 'img/instagram.svg',
+                name: 'instagram'
+            }
+        ]
+    })
