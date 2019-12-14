@@ -22,7 +22,6 @@ let config = {
     // Точки входа
     entry: {
         index: `${PATHS.src}/index.js`,
-        login: `${PATHS.src}/login.js`
     },
 
     // На выходе [name] - имя точки входа
@@ -78,7 +77,8 @@ let config = {
                         options: {
                             resources: [
                                 `${PATHS.src}${PATHS.theme}variables.sass`,
-                                // `${PATHS.src}${PATHS.theme}mixins.scss`,
+                                `${PATHS.src}${PATHS.theme}mixins.sass`,
+                                `${PATHS.src}${PATHS.theme}functions.sass`,
                                 // `${PATHS.src}${PATHS.theme}fonts.sass`,
                             ],
                         }
@@ -141,8 +141,6 @@ let config = {
         ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/${page}`,
             filename: `./${page.replace(/\.pug/, '.html')}`,
-            chunks: ['vendors', `${page.replace(/\.pug/, '')}`],
-
         }))
 
     ]

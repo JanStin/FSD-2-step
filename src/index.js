@@ -1,6 +1,13 @@
 let test = (a, b) => a+b;
 console.log(test(12,12));
 import './theme/fonts.sass';
-import './components/footer-bottom/footer-bottom';
-import './components/head/head';
+
+function requireAll(requireContext) {
+    return requireContext.keys().map(requireContext);
+}
+
+
+requireAll(require.context('./components', true, /\.(sass)$/));
+requireAll(require.context('./components', true, /\.(jsx?)$/));
+requireAll(require.context('./pages', true, /\.(jsx?)$/));
 
