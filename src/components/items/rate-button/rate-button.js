@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $('.rate-button .rate-button__star').on('mouseover', function(){
         // Получаем номер data-value и переводим в числовое значение.
