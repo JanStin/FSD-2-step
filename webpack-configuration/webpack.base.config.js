@@ -33,7 +33,10 @@ let config = {
 
     resolve: {
         alias: {
-            '~':'src'
+            // bind version of jquery-ui
+            "jquery-ui": "jquery-ui/jquery-ui.js",
+            // bind to modules;
+            modules: path.join(__dirname, "node_modules"),
         }
     },
 

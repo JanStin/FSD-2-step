@@ -1,6 +1,6 @@
-require(jquery-ui-bundle);
-import './theme/fonts.sass';
 
+import './theme/fonts.sass';
+require('jquery-ui-bundle');
 function requireAll(requireContext) {
     return requireContext.keys().map(requireContext);
 }
