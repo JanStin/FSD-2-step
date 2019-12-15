@@ -1,3 +1,17 @@
+@mixin bold()
+    font-family: $main-font
+    color: $color-dark
+    font-style: normal
+    font-weight: bold
+    font-size: 12px
+    line-height: 15px
+    text-transform: uppercase
+
+@mixin normal()
+    font-family: $main-font    
+    font-style: normal
+    font-weight: normal
+
 .dropdown
     width: 266px
     
@@ -8,7 +22,6 @@
     align-content: center
     background: #FFFFFF
     border: 1px solid rgba(31, 32, 65, 0.5)
-    box-sizing: border-box
     border-bottom-left-radius: 2px
     border-bottom-right-radius: 2px
     > .dropdown__item
@@ -19,13 +32,7 @@
         grid-template-rows: 1fr
         align-items: center
         > .dropdown__name, .dropdown__count
-            font-family: $main-font
-            color: $color-dark
-            font-style: normal
-            font-weight: bold
-            font-size: 12px
-            line-height: 15px
-            text-transform: uppercase
+            @include bold()
         > .dropdown__name
             padding-left: 15px
         > .dropdown__circle
@@ -33,9 +40,7 @@
             border: 1px solid rgba(31, 32, 65, 0.5)
             box-sizing: border-box
             border-radius: 22px
-            font-family: Montserrat
-            font-style: normal
-            font-weight: normal
+            @include normal()
             width: 30px
             height: 30px
             font-size: 18px
@@ -74,12 +79,8 @@
         flex-basis: 44px
         text-align: center
     > .dropdown__text
-        // Заменить на миксин.
-        font-family: $main-font
+        @include normal()
         color: $color-dark-75
-        font-style: normal
-        font-weight: normal
         font-size: 14px
         line-height: 24px
-
         padding-left: 15px
