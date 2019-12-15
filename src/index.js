@@ -1,5 +1,4 @@
-let test = (a, b) => a+b;
-console.log(test(12,12));
+require(jquery-ui-bundle);
 import './theme/fonts.sass';
 
 function requireAll(requireContext) {
