@@ -3,8 +3,18 @@ $(document).ready(function(){
         $(this).next().slideToggle();
     });
 
-    $(this).click(function() {
-        if ($(this).hasClass("minus"))
-            alert('-');
+    $(".minus").click(function() {
+        let count = $(this).parent().find($('.dropdown__count')).text();
+        count = parseInt(count);
+        if (count > 0) {
+            $(this).parent().find($('.dropdown__count')).text(--count);
+        }
+    });
+
+    
+    $(".plus").click(function() {
+        let count = $(this).parent().find($('.dropdown__count')).text();
+        count = parseInt(count);
+        $(this).parent().find($('.dropdown__count')).text(++count);
     });
 });
