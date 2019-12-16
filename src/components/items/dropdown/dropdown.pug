@@ -1,5 +1,29 @@
-.dropdown.amenity(data-id="1")
-    
+//- 
+    Сделать в поле .dropdown__text составной текст из нескольких элементов.
+    Типа .dropdown__text= options.position-one кровати options.position-one кровати
+mixin dropdown(options)
+    .dropdown.amenity(data-id=options.data-id)  
+    .dropdown__button
+        .dropdown__text= options.position-one 
+        .dropdown__arrow keyboard_arrow_down
+    .dropdown__list
+        .dropdown__item 
+            .dropdown__name Спальни
+            .dropdown__circle.minus -
+            .dropdown__count 2
+            .dropdown__circle.plus +
+        .dropdown__item 
+            .dropdown__name Кровати
+            .dropdown__circle.minus -
+            .dropdown__count 3
+            .dropdown__circle.plus +
+        .dropdown__item 
+            .dropdown__name Ванные комнаты
+            .dropdown__circle_inactive.minus -
+            .dropdown__count 0
+            .dropdown__circle.plus +
+
+.dropdown.amenity(data-id="1")  
     .dropdown__button
         .dropdown__text Что надо?    
         .dropdown__arrow keyboard_arrow_down

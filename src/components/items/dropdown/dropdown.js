@@ -1,11 +1,6 @@
 $(document).ready(function() {
-    // let ccc = $('.amenity');
-    // $.each(ccc, function() {
-        
-    // });
-    // console.log(ccc);
-    // writeAmenity($('.amenity[data-id="1"]'));
-    // $(".dropdown__button").next().slideToggle();
+    $(".dropdown__button").next().slideToggle();
+
     $(".dropdown__button").click(function() {
         $(this).next().slideToggle();
     });
@@ -89,3 +84,7 @@ $(document).ready(function() {
         pole.text(text);
     }
 });
+
+function lol() {
+    alert('lol');
+}
