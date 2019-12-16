@@ -1,7 +1,11 @@
 $(document).ready(function() {
-    
-    writeAmenity($('#amenity'));
-
+    // let ccc = $('.amenity');
+    // $.each(ccc, function() {
+        
+    // });
+    // console.log(ccc);
+    // writeAmenity($('.amenity[data-id="1"]'));
+    // $(".dropdown__button").next().slideToggle();
     $(".dropdown__button").click(function() {
         $(this).next().slideToggle();
     });
@@ -18,7 +22,12 @@ $(document).ready(function() {
             $(this).addClass('dropdown__circle_inactive');
         }  
 
-        writeAmenity($('#amenity'));
+        // Проверка на наличие родителя.
+        if ($(this).parents('.amenity').length > 0) {
+            let dataId = ($(this).parents('.amenity').data('id'));
+            parent = $('.amenity[data-id=' + dataId + ']');
+            writeAmenity(parent); 
+        }
     });
 
     
@@ -34,7 +43,12 @@ $(document).ready(function() {
             minus.addClass('dropdown__circle');
         }
 
-        writeAmenity($('#amenity'));  
+        // Проверка на наличие родителя.
+        if ($(this).parents('.amenity').length > 0) {
+            let dataId = ($(this).parents('.amenity').data('id'));
+            parent = $('.amenity[data-id=' + dataId + ']');
+            writeAmenity(parent); 
+        }
     });
 
     
@@ -42,7 +56,7 @@ $(document).ready(function() {
         // Получаем дочерние элементы.
         let child = id.find('.dropdown__count');
         // Переменная для ввода в текстовое поле.
-        let amenity = '';
+        let text = '';
 
         // Цикл и доп. переменная для него.
         let i = 0;
@@ -50,21 +64,28 @@ $(document).ready(function() {
             // Определение позиции и её запись с полученным значением в переменую для ввода.
             switch (i) {
                 case 0:
-                    amenity += `${this.textContent} спальни`;
+                    text += `${this.textContent} спальни`;
                     break;
                 // В макете стоят многоточия, следовательно даже если в кол-ве позиции стоит 0 - всё равно указывается.
                 case 1:
-                    amenity += `, ${this.textContent} кровати`;
+                    text += `, ${this.textContent} кровати`;
                     break;
                 case 2:
-                    amenity += `, ${this.textContent} ванные комнаты`;
+                    text += `, ${this.textContent} ванные комнаты`;
                     break;
             }
             i++;
         })
 
+        // Обрезка текста.
+        if (text.length > 20)
+        {
+            text = text.substr(0, 20);
+            text += '...';
+        }
+
         // Ищем дочерний элемент и подставляем в него значения.
         let pole = id.find('.dropdown__text');
-        pole.text(amenity);
+        pole.text(text);
     }
 });
