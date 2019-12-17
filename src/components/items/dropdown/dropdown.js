@@ -23,6 +23,11 @@ $(document).ready(function() {
             parent = $('.amenity[data-id=' + dataId + ']');
             writeAmenity(parent); 
         }
+        if ($(this).parents('.visitor').length > 0) {
+            let dataId = ($(this).parents('.visitor').data('id'));
+            parent = $('.visitor[data-id=' + dataId + ']');
+            writeVisitor(parent); 
+        }
     });
 
     
@@ -38,11 +43,16 @@ $(document).ready(function() {
             minus.addClass('dropdown__circle');
         }
 
-        // Проверка на наличие родителя.
+        // Проверка на наличие родителя. 
         if ($(this).parents('.amenity').length > 0) {
             let dataId = ($(this).parents('.amenity').data('id'));
             parent = $('.amenity[data-id=' + dataId + ']');
             writeAmenity(parent); 
+        }
+        if ($(this).parents('.visitor').length > 0) {
+            let dataId = ($(this).parents('.visitor').data('id'));
+            parent = $('.visitor[data-id=' + dataId + ']');
+            writeVisitor(parent); 
         }
     });
 
@@ -83,8 +93,27 @@ $(document).ready(function() {
         let pole = id.find('.dropdown__text');
         pole.text(text);
     }
-});
 
-function lol() {
-    alert('lol');
-}
+    function writeVisitor(id) {
+        // Получаем дочерние элементы.
+        let child = id.find('.dropdown__count');
+
+        // Цикл для посчета значений.
+        let sum = 0;
+        $.each(child, function() {
+            sum += parseInt(this.textContent);
+            
+        })
+
+        // Переменная для ввода в текстовое поле.
+        let text = '';
+        if (sum > 0) {
+            text = sum + ' гостя';
+        } else {
+            text = 'Сколько гостей';
+        }
+        // Ищем дочерний элемент и подставляем в него значения.
+        let pole = id.find('.dropdown__text');
+        pole.text(text);
+    }
+});

@@ -2,28 +2,50 @@
     Сделать в поле .dropdown__text составной текст из нескольких элементов.
     Типа .dropdown__text= options.position-one кровати options.position-one кровати
 mixin dropdown(options)
-    .dropdown.amenity(data-id=options.data-id)  
-    .dropdown__button
-        .dropdown__text= options.position-one 
-        .dropdown__arrow keyboard_arrow_down
-    .dropdown__list
-        .dropdown__item 
-            .dropdown__name Спальни
-            .dropdown__circle.minus -
-            .dropdown__count 2
-            .dropdown__circle.plus +
-        .dropdown__item 
-            .dropdown__name Кровати
-            .dropdown__circle.minus -
-            .dropdown__count 3
-            .dropdown__circle.plus +
-        .dropdown__item 
-            .dropdown__name Ванные комнаты
-            .dropdown__circle_inactive.minus -
-            .dropdown__count 0
-            .dropdown__circle.plus +
+    -         
+        var name  = []
+        var value = []
+        var text = ''
+        var classes = ''
+    if options.vestNumbers
+        - 
+            classes = 'visitor'
+            text = 'Сколько гостей' 
+            name  = ['Взрослые', 'Дети', 'Младенцы']
+            value = [0, 0, 0]
+    else 
+        -
+            classes = 'amenity'
+            text = '2 спальни, 2 кровати...'
+            name  = ['Спальни', 'Кровати', 'Ванные комнаты']
+            value = [2, 2, 0]
+    .dropdown(class= classes)(data-id=options.dataid) 
+        .dropdown__button
+            .dropdown__text= text
+            .dropdown__arrow keyboard_arrow_down
+        .dropdown__list
+            - for (var i = 0; i < 3; i++)
+                .dropdown__item 
+                    .dropdown__name= name[i]
+                    if value[i] > 0
+                        .dropdown__circle.minus -
+                    else
+                        .dropdown__circle_inactive.minus -
+                    .dropdown__count= value[i]
+                    .dropdown__circle.plus +
+            if options.vestNumbers
+                .dropdown__item_extra 
+                    .dropdown__clear Очистить
+                    .dropdown__apply Применить
 
-.dropdown.amenity(data-id="1")  
+
++dropdown({
+    vestNumbers: true,
+    dataid: 1,
+})
+
+
+//- .dropdown.amenity(data-id="1")  
     .dropdown__button
         .dropdown__text Что надо?    
         .dropdown__arrow keyboard_arrow_down
