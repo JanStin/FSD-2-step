@@ -1,0 +1,104 @@
+@mixin bold()
+    font-family: $main-font
+    color: $color-dark
+    font-style: normal
+    font-weight: bold
+    font-size: 12px
+    line-height: 15px
+    text-transform: uppercase
+
+@mixin normal()
+    font-family: $main-font    
+    font-style: normal
+    font-weight: normal
+
+.dropdown
+    width: 266px
+    
+.dropdown__list
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-content: center
+    background: #FFFFFF
+    border: 1px solid rgba(31, 32, 65, 0.5)
+    border-bottom-left-radius: 2px
+    border-bottom-right-radius: 2px
+    > .dropdown__item
+        margin: 11px 0 0 0
+        display: grid
+        grid-auto-flow: row
+        grid-template-columns: 167px 30px 32px 30px
+        align-items: center
+        > .dropdown__name, .dropdown__count
+            @include bold()
+        > .dropdown__name
+            padding-left: 15px
+        > .dropdown__circle
+            color: $color-dark-50
+            border: 1px solid rgba(31, 32, 65, 0.5)
+            box-sizing: border-box
+            border-radius: 22px
+            @include normal()
+            width: 30px
+            height: 30px
+            font-size: 18px
+            line-height: 26px
+            text-align: center
+        > .dropdown__circle
+            &_inactive
+                @extend .dropdown__circle
+                color: $color-dark-25
+                border: 1px solid rgba(31, 32, 65, 0.25)
+        > .dropdown__count
+            text-align: center
+    > .dropdown__item_extra
+        display: grid
+        grid-auto-flow: row
+        grid-template-columns: 60% 40%
+        grid-template-rows: 1fr
+        align-items: center
+        margin: 11px 0 0 0
+        padding: 0 0 13px 14px
+        > .dropdown__clear, .dropdown__apply
+            @include bold()
+        > .dropdown__clear
+            color: $color-dark-50
+        > .dropdown__apply
+            color: #BC9CFF
+            text-align: center
+            
+             
+            
+
+            
+
+
+
+.dropdown__button
+    background: #FFFFFF
+    height: 44px
+    border: 1px solid rgba(31, 32, 65, 0.5)
+    box-sizing: border-box
+    margin-bottom: -1px
+    border-top-left-radius: 2px
+    border-top-right-radius: 2px
+    cursor: pointer
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    > .dropdown__arrow
+        font-family: Material Icons
+        font-style: normal
+        font-weight: normal
+        font-size: 24px
+        line-height: 24px
+        flex-basis: 44px
+        text-align: center
+    > .dropdown__text
+        @include normal()
+        color: $color-dark-75
+        font-size: 14px
+        line-height: 24px
+        padding-left: 15px
