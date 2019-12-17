@@ -1,0 +1,12 @@
+//@function percent($widthBlock)
+//  @return $widthBlock / 1160px * 100%
+
+
+@function percent($widthBlock)
+  $screenWidth: (1440 * 0.01)
+  $totalWidth: ($widthBlock / $screenWidth)
+  @return $totalWidth + vw
+
+@function rem($size)
+  $pixel: $size /16
+  @return $pixel + rem
