@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(".dropdown__button").next().slideToggle();
+    // $(".dropdown__button").next().slideToggle();
 
     $(".dropdown__button").click(function() {
         $(this).next().slideToggle();
@@ -19,13 +19,11 @@ $(document).ready(function() {
 
         // Проверка на наличие родителя.
         if ($(this).parents('.amenity').length > 0) {
-            let dataId = ($(this).parents('.amenity').data('id'));
-            parent = $('.amenity[data-id=' + dataId + ']');
+            let parent = $(this).parents('.amenity');
             writeAmenity(parent); 
         }
         if ($(this).parents('.visitor').length > 0) {
-            let dataId = ($(this).parents('.visitor').data('id'));
-            parent = $('.visitor[data-id=' + dataId + ']');
+            let parent = $(this).parents('.visitor');
             writeVisitor(parent); 
         }
     });
@@ -45,13 +43,11 @@ $(document).ready(function() {
 
         // Проверка на наличие родителя. 
         if ($(this).parents('.amenity').length > 0) {
-            let dataId = ($(this).parents('.amenity').data('id'));
-            parent = $('.amenity[data-id=' + dataId + ']');
+            let parent = $(this).parents('.amenity');
             writeAmenity(parent); 
         }
         if ($(this).parents('.visitor').length > 0) {
-            let dataId = ($(this).parents('.visitor').data('id'));
-            parent = $('.visitor[data-id=' + dataId + ']');
+            let parent = $(this).parents('.visitor');
             writeVisitor(parent); 
         }
     });

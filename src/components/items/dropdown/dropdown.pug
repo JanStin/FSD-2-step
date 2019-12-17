@@ -1,6 +1,12 @@
 //- 
-    Сделать в поле .dropdown__text составной текст из нескольких элементов.
-    Типа .dropdown__text= options.position-one кровати options.position-one кровати
+    Dropdown, который отвечает за удобство номера и кол-во гостей.
+    На вход подаётся один параметр типа bool - vestNumbers.
+    Если true - то будет заготвка с кол-во гостей.
+    Если false - то список удобств. 
+    Все значения заданы по умолчанию, как в макете. 
+    Пример вызова - под миксином. 
+
+
 mixin dropdown(options)
     -         
         var name  = []
@@ -19,7 +25,7 @@ mixin dropdown(options)
             text = '2 спальни, 2 кровати...'
             name  = ['Спальни', 'Кровати', 'Ванные комнаты']
             value = [2, 2, 0]
-    .dropdown(class= classes)(data-id=options.dataid) 
+    .dropdown(class= classes)
         .dropdown__button
             .dropdown__text= text
             .dropdown__arrow keyboard_arrow_down
@@ -39,29 +45,6 @@ mixin dropdown(options)
                     .dropdown__apply Применить
 
 
-+dropdown({
-    vestNumbers: true,
-    dataid: 1,
-})
-
-
-//- .dropdown.amenity(data-id="1")  
-    .dropdown__button
-        .dropdown__text Что надо?    
-        .dropdown__arrow keyboard_arrow_down
-    .dropdown__list
-        .dropdown__item 
-            .dropdown__name Спальни
-            .dropdown__circle.minus -
-            .dropdown__count 2
-            .dropdown__circle.plus +
-        .dropdown__item 
-            .dropdown__name Кровати
-            .dropdown__circle.minus -
-            .dropdown__count 3
-            .dropdown__circle.plus +
-        .dropdown__item 
-            .dropdown__name Ванные комнаты
-            .dropdown__circle_inactive.minus -
-            .dropdown__count 0
-            .dropdown__circle.plus +
+//- +dropdown({
+        vestNumbers: true
+    })
