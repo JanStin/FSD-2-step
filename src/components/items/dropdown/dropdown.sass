@@ -3,17 +3,12 @@
     color: $color-dark
     font-style: normal
     font-weight: bold
-    font-size: 12px
-    line-height: 15px
+    font-size: rem(12)
+    line-height: rem(15)
     text-transform: uppercase
 
-@mixin normal()
-    font-family: $main-font    
-    font-style: normal
-    font-weight: normal
-
 .dropdown
-    width: 266px
+    width: rem(266)
     
 .dropdown__list
     display: flex
@@ -25,25 +20,27 @@
     border-bottom-left-radius: 2px
     border-bottom-right-radius: 2px
     > .dropdown__item
-        margin: 11px 0 0 0
+        margin: rem(11) 0 0 0
         display: grid
         grid-auto-flow: row
-        grid-template-columns: 167px 30px 32px 30px
+        grid-template-columns: rem(167) rem(30) rem(32) rem(30)
         align-items: center
         > .dropdown__name, .dropdown__count
             @include bold()
         > .dropdown__name
-            padding-left: 15px
+            padding-left: rem(15)
         > .dropdown__circle
             color: $color-dark-50
             border: 1px solid rgba(31, 32, 65, 0.5)
             box-sizing: border-box
-            border-radius: 22px
-            @include normal()
-            width: 30px
-            height: 30px
-            font-size: 18px
-            line-height: 26px
+            border-radius: rem(22)
+            font-family: $main-font    
+            font-style: normal
+            font-weight: normal
+            width: rem(30)
+            height: rem(30)
+            font-size: rem(18)
+            line-height: rem(26)
             text-align: center
         > .dropdown__circle
             &_inactive
@@ -58,8 +55,8 @@
         grid-template-columns: 60% 40%
         grid-template-rows: 1fr
         align-items: center
-        margin: 11px 0 0 0
-        padding: 0 0 13px 14px
+        margin: rem(11) 0 0 0
+        padding: 0 0 rem(13) rem(14)
         > .dropdown__clear, .dropdown__apply
             @include bold()
         > .dropdown__clear
@@ -77,7 +74,7 @@
 
 .dropdown__button
     background: #FFFFFF
-    height: 44px
+    height: rem(44)
     border: 1px solid rgba(31, 32, 65, 0.5)
     box-sizing: border-box
     margin-bottom: -1px
@@ -92,13 +89,10 @@
         font-family: Material Icons
         font-style: normal
         font-weight: normal
-        font-size: 24px
-        line-height: 24px
-        flex-basis: 44px
+        font-size:  rem(24)
+        line-height: rem(24)
+        flex-basis: rem(44)
         text-align: center
     > .dropdown__text
-        @include normal()
-        color: $color-dark-75
-        font-size: 14px
-        line-height: 24px
+        @include font($height: 24, $weight: normal)
         padding-left: 15px

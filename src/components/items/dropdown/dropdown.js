@@ -112,4 +112,20 @@ $(document).ready(function() {
         let pole = id.find('.dropdown__text');
         pole.text(text);
     }
+
+
+    $(".dropdown__clear").click(function() {
+        // Получам родителя
+        let parent = $(this).parent().find($('.visitor'));
+        // Получаем дочерние элементы.
+        let child = parent.find('.dropdown__count').text(0);
+        console.log(child);
+        
+
+        // Цикл и доп. переменная для него.
+        // $.each(child, function() {
+            
+        // })
+       
+    });
 });
