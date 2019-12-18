@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // $(".dropdown__button").next().slideToggle();
+    $(".dropdown__button").next().slideToggle();
 
     $(".dropdown__button").click(function() {
         $(this).next().slideToggle();
@@ -22,10 +22,6 @@ $(document).ready(function() {
             let parent = $(this).parents('.amenity');
             writeAmenity(parent); 
         }
-        if ($(this).parents('.visitor').length > 0) {
-            let parent = $(this).parents('.visitor');
-            writeVisitor(parent); 
-        }
     });
 
     
@@ -46,16 +42,12 @@ $(document).ready(function() {
             let parent = $(this).parents('.amenity');
             writeAmenity(parent); 
         }
-        if ($(this).parents('.visitor').length > 0) {
-            let parent = $(this).parents('.visitor');
-            writeVisitor(parent); 
-        }
     });
 
     
-    function writeAmenity(id) {
+    function writeAmenity(parent) {
         // Получаем дочерние элементы.
-        let child = id.find('.dropdown__count');
+        let child = parent.find('.dropdown__count');
         // Переменная для ввода в текстовое поле.
         let text = '';
 
@@ -86,13 +78,15 @@ $(document).ready(function() {
         }
 
         // Ищем дочерний элемент и подставляем в него значения.
-        let pole = id.find('.dropdown__text');
+        let pole = parent.find('.dropdown__text');
         pole.text(text);
     }
 
-    function writeVisitor(id) {
+    $(".dropdown__apply").click(function() {
+        // Получам родителя
+        let parent = $(this).parents().find($('.visitor'));
         // Получаем дочерние элементы.
-        let child = id.find('.dropdown__count');
+        let child = parent.find('.dropdown__count');
 
         // Цикл для посчета значений.
         let sum = 0;
@@ -108,24 +102,27 @@ $(document).ready(function() {
         } else {
             text = 'Сколько гостей';
         }
+
+        // Расскрываем кнопку "отчистить".
+        parent.find('.dropdown__clear').css('visibility', 'visible');
+
         // Ищем дочерний элемент и подставляем в него значения.
-        let pole = id.find('.dropdown__text');
+        let pole = parent.find('.dropdown__text');
         pole.text(text);
-    }
+    });
 
 
     $(".dropdown__clear").click(function() {
         // Получам родителя
-        let parent = $(this).parent().find($('.visitor'));
+        let parent = $(this).parents().find($('.visitor'));
         // Получаем дочерние элементы.
         let child = parent.find('.dropdown__count').text(0);
-        console.log(child);
-        
 
-        // Цикл и доп. переменная для него.
-        // $.each(child, function() {
-            
-        // })
-       
+         // Скрываем кнопку "отчистить".
+         parent.find('.dropdown__clear').css('visibility', 'hidden');
+
+        // Ищем дочерний элемент и подставляем в него значения.
+        let pole = parent.find('.dropdown__text');
+        pole.text('Сколько гостей');       
     });
 });
