@@ -1,0 +1,33 @@
+
+
+mixin slider(options)
+    div.slider
+        div.slider__viewport
+            div.slider__prev CC
+            for slide, index in options.slides
+                if index === 0
+                    div.slider-item.active
+                        img(src= options.path + slide)
+                else
+                    div.slider-item
+                        img(src= options.path + slide)
+
+            //div.slider-item
+            //    img(src='img/2.svg')
+            //div.slider-item
+            //    img(src='img/3.jpg')
+            div.slider__target
+                for slide, index in options.slides
+                    if index === 0
+                        div.slider__target-circle.active
+                    else
+                        div.slider__target-circle
+            div.slider__next NX
++slider({
+    path: 'img/',
+    slides: ['1.svg',  '2.svg',  '3.jpg', '2.svg']
+})
++slider({
+    path: 'img/',
+    slides: ['1.svg',  '2.svg',  '3.jpg']
+})

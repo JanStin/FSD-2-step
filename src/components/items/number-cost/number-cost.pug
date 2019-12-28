@@ -1,0 +1,18 @@
+include ../rate-button/rate-button
+mixin number-cost(options)
+    - var number = '№ ' + options.number
+    - var sale = options.sale + 'Р в сутки'
+    div.number-cost
+        div.number-cost__number= number
+            if options.lux === true
+                span  люкс
+        div.number-cost__sale= sale
+        if options.star === true
+            div.number-cost__line
+            +rate-button({
+                element: 'number-cost'
+            })
+            div.number-cost__sale= '145 Отзывов'
+
+
+

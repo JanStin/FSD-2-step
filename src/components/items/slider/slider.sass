@@ -1,0 +1,46 @@
+.slider
+  position: relative
+
+  &__target
+    position: absolute
+    display: flex
+    bottom: 15px
+    right: 15px
+    &-circle
+      @include mm-wh(7, 7)
+      border: 1px solid white
+      border-radius: 100%
+      margin-left: 4px
+      box-shadow: 0 5px 5px $color-dark-25
+      &.active
+        background: #FFFFFF
+
+
+
+  &__prev
+    z-index: 999
+  &__next
+    z-index: 999
+    justify-self: end
+
+  &__viewport
+    display: grid
+    grid-template-columns: 1fr 1fr
+    align-items: center
+    position: relative
+    // Размеры слайдера
+    width: 251px
+    height: 170px
+    overflow: hidden
+
+
+  &-item
+    position: absolute
+    width: 100%
+    display: none
+    img
+      width: 100%
+      height: 100%
+    &.active
+      display: block
+

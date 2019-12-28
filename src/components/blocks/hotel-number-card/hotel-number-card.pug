@@ -1,0 +1,27 @@
+include ../../items/number-cost/number-cost
+
+mixin hotel-number-card(options)
+    - var path = 'img/hotel-cards-photo/' + options.infoRoom.number + '/1.svg'
+    - var blockName = 'hotel-number-card'
+    div.hotel-number-card
+        div(class = blockName + '__slider')
+            img(src=path)
+        div(class = blockName + '__info')
+            - var number = '№ ' + options.number
+            div(class = blockName + '__number')
+                +number-cost({
+                    number: options.infoRoom.number,
+                    sale: options.infoRoom.sale,
+                    lux: options.infoRoom.lux,
+                    star: true
+                })
+
+
++hotel-number-card({
+    infoRoom: {
+        number: 802,
+        lux: true,
+        sale: '2 000'
+    },
+
+})
