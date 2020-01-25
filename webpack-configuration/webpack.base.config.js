@@ -91,7 +91,11 @@ let config = {
             },
             {
                 test: /\.pug$/,
-                loader: 'pug-loader'
+                loader: 'pug-loader',
+                options: {
+                    pretty: true,
+                    self: true
+                }
             },
             {
                 test: /\.(img|jpe?g|gif|svg)?$/,
@@ -144,6 +148,7 @@ let config = {
         ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/${page}`,
             filename: `./${page.replace(/\.pug/, '.html')}`,
+            testes: 'Hello wr'
         }))
 
     ]
