@@ -10,24 +10,20 @@ mixin like-button(options)
         - var options = {}
     if !options.count
         - options.count = 3
-    -
-        var classes = ''
-        classes += options.element ? ' ' + options.element + '__like-button': ''
-        classes += options.mode ? ' ' + 'like-button_' + options.mode : ''
-        classes += options.addAnyClass ? ' ' + options.addAnyClass : ''
 
     if options.state
-        .like-button.like-button-on(class= classes)
+        .like-button.like-button-on(class= pf.addClasses('like-button', options))
             .like-button__like favorite
             .like-button__count= options.count
     else
-        .like-button(class= classes)
+        .like-button(class= pf.addClasses('like-button', options))
             .like-button__like favorite_border
             .like-button__count= options.count
-//
-//+like-button({
-//    state: true,
-//    count: 12,
-//    element: 'header',
-//    mode: 'text'
-//})
+
+//-
+    +like-button({
+        state: true,
+        count: 12,
+        element: 'header',
+        mode: 'text'
+    })

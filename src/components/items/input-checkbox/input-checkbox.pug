@@ -4,7 +4,7 @@
     options.id - id (массив)                | options.element - класс элемента
     options.name - name (массив)            | options.mode - модификатор блока
     options.info - подпись в label (массив) | options.state - модификатор состояния
-
+// TODO сделать визуальную подсказку если были переданны не все параметры, вылетает ошибка! при options = {}
 mixin input-checkbox(options)
   if !options
     -options= {}
@@ -12,12 +12,9 @@ mixin input-checkbox(options)
     p Указание id, info и times является обязательным для input-checkbox
   -
     var classes = 'input-checkbox'
-    classes += options.element ? ' ' + options.element + '__input-checkbox': ''
-    classes += options.mode ? ' input-checkbox_' + options.mode : ''
     classes += options.state ? ' input-checkbox_state_' + options.state : ''
-    classes += options.addAnyClass ? ' ' + options.addAnyClass : ''
 
-  div(class=classes)
+  div(class=classes class= pf.addClasses('input-checkbox', options))
     ul.input-checkbox__conteiner
     -for (var x = 0; x < options.id.length; x++)
       li.input-checkbox__item

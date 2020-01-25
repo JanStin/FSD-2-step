@@ -6,13 +6,19 @@
 
 mixin nav(options)
     if !options
-        - options = {}
-    -
-        var classes = 'nav'
-        classes += options.mode ? ' nav_' + options.mode : ''
-        classes += options.element ? ' ' + options.element + '__nav' : ''
-        classes += options.addAnyClass ? ' ' + options.addAnyClass : ''
-    div(class=classes)
+        -
+            options = {
+            listMenu: [
+                {text: 'Главная', link: '#'},
+                {text: 'О нас', link: 'https://google.com'},
+                {text: 'Главная', link: '#', drop: true},
+                {text: 'Главная', link: '#'},
+                {text: 'Главная', link: '#'}
+             ]
+            }
+        include description
+
+    div.nav(class=pf.addClasses('nav', options))
         for text in options.listMenu
             if !text.link
                 - text.link = '#'
@@ -23,13 +29,3 @@ mixin nav(options)
             else
                 a.nav__link(href=text.link)= text.text
 
-//+nav({
-//    element: 'header',
-//    listMenu: [
-//        {text: 'Главная', link: '#'},
-//        {text: 'О нас', link: 'https://google.com'},
-//        {text: 'Главная', link: '#', drop: true},
-//        {text: 'Главная', link: '#'},
-//        {text: 'Главная', link: '#'}
-//    ]
-//})
