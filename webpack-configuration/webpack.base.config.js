@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const fs = require('fs');
 
+
+
 const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
@@ -21,7 +23,7 @@ let chunks = (vendor, myName) => [vendor, myName];
 let config = {
     // Точки входа
     entry: {
-        index: `${PATHS.src}/index.js`,
+        index: `${PATHS.src}/index.js`
     },
 
     // На выходе [name] - имя точки входа
@@ -82,7 +84,6 @@ let config = {
                                 `${PATHS.src}${PATHS.theme}variables.sass`,
                                 `${PATHS.src}${PATHS.theme}mixins.sass`,
                                 `${PATHS.src}${PATHS.theme}functions.sass`,
-                                // `${PATHS.src}${PATHS.theme}fonts.sass`,
                             ],
                         }
                     }
@@ -94,9 +95,9 @@ let config = {
                 loader: 'pug-loader',
                 options: {
                     pretty: true,
-                    self: true
                 }
             },
+
             {
                 test: /\.(img|jpe?g|gif|svg)?$/,
                 loader: 'file-loader',
@@ -119,6 +120,8 @@ let config = {
     },
 
     plugins: [
+
+
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}/css/[name].[contenthash].css`,
             chunkFilename: '[id].css',
@@ -126,8 +129,11 @@ let config = {
         }),
 
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
+            "$" : 'jquery',
+            "jQuery" : "jquery",
+            "window.jQuery" : "jquery",
+            "pf" : "./pugFunctions"
+
         }),
 
         new CopyWebpackPlugin([
@@ -135,6 +141,14 @@ let config = {
                 from: `${PATHS.src}/components`, to: `img`,
                 ignore: ['*js' , '*scss', '*pug', '*sass' ],
                 flatten:true
+            }
+        ]),
+
+        new CopyWebpackPlugin([
+            {
+                from: `${PATHS.src}/theme/hotel-cards-photo`, to: `img/hotel-cards-photo`,
+                ignore: ['*js' , '*scss', '*pug', '*sass' ],
+                flatten:false
             }
         ]),
         new CopyWebpackPlugin([
@@ -148,7 +162,7 @@ let config = {
         ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/${page}`,
             filename: `./${page.replace(/\.pug/, '.html')}`,
-            testes: 'Hello wr'
+            // chunks: ['vendors', `${page.replace(/\.pug/, '')}`],
         }))
 
     ]
